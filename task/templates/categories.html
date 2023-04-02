@@ -23,7 +23,8 @@
                         <td>{{ category.category_name }}</td>
                         <td>{{ category.category_priority }}</td>
                         <td>
-                            <a href="{% url 'single_category' id_category=category.id %}">View</a>
+                            <a href="{% url 'single_category' id_category=category.id %}" class="pr-3">View</a>
+                            <a href="{% url 'all_tasks_by_category' id_category=category.id %}" class="px-3">Show all tasks</a>
                         </td>
                     </tr>
                 {% endfor %}

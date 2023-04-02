@@ -19,10 +19,14 @@ from task import views as task
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # All tasks routes
     path('tasks/', task.get_all_tasks, name='all_tasks'),
+    path('task/create', task.post_task, name='create_task'),
     path('task/<int:id_task>/', task.get_task_by_id, name='single_task'),
     path('category/<int:id_category>/tasks', task.get_tasks_by_category, name='all_tasks_by_category'),
 
+    # All categories routes
     path('categories/', task.get_all_categories, name = 'all_categories'),
     path('category/<int:id_category>', task.get_category_by_id, name = 'single_category'),
     path('category/<int:id_category>', task.get_all_categories, name = 'all_categories'),

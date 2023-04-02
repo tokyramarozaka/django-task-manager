@@ -7,6 +7,18 @@
     
 
 {% block main %}
-    {{form.as_table}}
+    {% if message %}
+        <div class="alert alert-success" role="alert">
+        This is a success alert—check it out!
+    {% endif %}
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <table class="table">
+            {{form.as_table}}
+        </table>
+        <button class="btn btn-primary">Submit task</button>
+        <input type="reset" value="Reset" class="btn btn-outline-primary">
+    </form>
 {% endblock main %}
     

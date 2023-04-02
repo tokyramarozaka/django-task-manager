@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 from task.forms.task_form import TaskForm
 from .models import Category, Task
-from django.db.models import Q
 
 # Create your views here.
 
@@ -11,7 +10,8 @@ def get_all_tasks(request):
     """ Retrieves all tasks in the database """
     tasks = Task.objects.all().order_by('deadline')
     return render(request, 'tasks.html', {
-        'tasks' : tasks
+        'tasks' : tasks,
+        'label' : 'All Tasks'
     })
 
 def get_task_by_id(request, id_task):
@@ -24,8 +24,11 @@ def get_task_by_id(request, id_task):
 def get_tasks_by_category(request, id_category):
     """ Retrives all tasks corresponding to the given category id"""
     tasks = Task.objects.filter(category=id_category)
+    category = Category.objects.get(id=id_category)
+
     return render(request, 'tasks.html', {
         'tasks' : tasks,
+        'label' : 'All '+ category.category_name +' tasks'
     })
 
 def post_task(request):
@@ -38,10 +41,14 @@ def post_task(request):
         else : 
             form.errors.as_data()
         return render(request, 'create_task.html', {
-            'message': 'Task added successfully'
+            'message': 'Task added successfully',
+            'form': form
         })
     else :
-        raise (request, 'tasks.html', {})
+        form = TaskForm()
+        return render(request, 'create_task.html', {
+            'form': form,
+        })
 
 
 # CATEGORY
