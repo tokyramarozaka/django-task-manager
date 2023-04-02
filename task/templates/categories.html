@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Categories list
+{% endblock title %}
+    
+{% block main %}
+    <h1>Categories page</h1>
+    
+    <table class="table table-stripped table-hover my-4">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>IMPORTANCE LEVEL</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        {% if categories %}
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.category_name }}</td>
+                        <td>{{ category.category_priority }}</td>
+                        <td>
+                            <a href="{% url 'single_category' id_category=category.id %}">View</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% else %}
+            <h5 class="text-center">There is no task at the moment</h5>
+        {% endif %}
+    </table>
+    
+{% endblock main %}

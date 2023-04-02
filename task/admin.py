@@ -1,5 +1,5 @@
 from django.contrib import admin
-from task.models import Category, Task 
+from .models import Category, Task 
 
 # Register your models here.
 admin.site.register(Category)

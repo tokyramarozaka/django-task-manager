@@ -1,6 +1,35 @@
 {% extends 'base.html' %}
 
 
+{% block title %}
+    {{task.task_title}}
+{% endblock title %}
+    
 {% block main %}
-    <h1>Single task page</h1>
+<h1>Single task page</h1>
+
+<ul class="list-group my-5">
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Title</div>
+          <p>{{task.task_title}}</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Description</div>
+          <p>{{task.task_description}}</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Deadline</div>
+          <p>{{task.deadline}}</p>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Category</div>
+          <p>{{task.category}}</p>
+      </li>
+</ul>
 {% endblock main %}

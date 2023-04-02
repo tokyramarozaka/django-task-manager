@@ -8,13 +8,14 @@
 {% block main %}
     <h1>Tasks page</h1>
     
-    <table class="table table-stripped my-3">
+    <table class="table table-stripped table-hover my-4">
         <thead>
             <tr>
                 <th>TITLE</th>
                 <th>DESCRIPTION</th>
                 <th>DEADLINE</th>
                 <th>CATEGORY</th>
+                <th>ACTIONS</th>
             </tr>
         </thead>
         {% if tasks %}
@@ -22,9 +23,12 @@
                 {% for task in tasks %}
                 <tr>
                     <td>{{ task.task_title }}</td>
-                    <td>{{ task.task_description }}</td>
+                    <td>{{ task.task_description|slice:":50" }}...</td>
                     <td>{{ task.deadline }}</td>
                     <td>{{ task.category.category_name }}</td>
+                    <td>
+                        <a href="{% url 'single_task' id_task=task.id %}">View</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

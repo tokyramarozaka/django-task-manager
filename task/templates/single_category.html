@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    {{category.category_name}}
+{% endblock title %}
+    
+{% block main %}
+<h1>Single category page</h1>
+
+<ul class="list-group my-5">
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Name</div>
+          <p>{{category.category_name}}</p>
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Priority</div>
+          <p>{{category.category_priority}}</p>
+        </div>
+      </li>
+</ul>
+{% endblock main %}
