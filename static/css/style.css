@@ -1,0 +1,6 @@
+.logo{
+    height : 4rem;
+    position: relative;
+    /* Deals the excessive whitespace on top of HEI logo*/
+    top : -0.3rem; 
+}
