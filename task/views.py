@@ -1,10 +1,14 @@
 from django.shortcuts import render
+from .models import Category, Task
 
 # Create your views here.
 
 # TASKS
 def get_all_tasks(request):
-    return render(request, 'tasks.html', {})
+    tasks = Task.objects.all()
+    return render(request, 'tasks.html', {
+        'tasks' : tasks
+    })
 
 def get_task_by_id(request, id):
     return render(request, 'single_task.html', {})
