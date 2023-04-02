@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.db.models import Q
 from task.forms.task_form import TaskForm
 from .models import Category, Task
 
@@ -17,7 +17,7 @@ def get_all_tasks(request):
 def get_task_by_id(request, id_task):
     """ Retrieves a single task by using its id """
     task = Task.objects.get(id=id_task)
-    return render(request, 'single_task.html', {
+    return render(request, 'tasks_single.html', {
         'task' : task,
     })
 
@@ -40,15 +40,30 @@ def post_task(request):
             form.save()
         else : 
             form.errors.as_data()
-        return render(request, 'create_task.html', {
+        return render(request, 'tasks_create.html', {
             'message': 'Task added successfully',
             'form': form
         })
     else :
         form = TaskForm()
-        return render(request, 'create_task.html', {
+        return render(request, 'tasks_create.html', {
             'form': form,
         })
+
+def get_task_by_title_or_description(request):
+    """ Searches all tasks whose title or description contains the given keyword """
+    keyword = request.GET.get("q")
+    results = Task.objects.filter(
+        Q(task_title__icontains=keyword) | Q(task_description__icontains=keyword)
+    )
+
+    # Ternary operator is so weird ... I know.
+    label = 'All tasks' if keyword.strip()=='' else 'Search results for '+keyword
+
+    return render(request, 'tasks.html', {
+        'label' : label, 
+        'tasks': results,
+    })
 
 
 # CATEGORY
@@ -60,9 +75,10 @@ def get_all_categories(request):
 
 def get_category_by_id(request, id_category):
     category = Category.objects.get(id=id_category)
-    return render(request, 'single_category.html', {
+    return render(request, 'categories_single.html', {
         'category' : category,
     })
 
+# Todo : make posting new categories possible and build its form
 def post_category(request):
-    return render(request, 'categories.html', {})
+    return render(request, 'categories_create.html', {})

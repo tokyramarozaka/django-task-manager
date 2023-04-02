@@ -41,8 +41,8 @@
                             <a class="nav-link" href="#">About us</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" role="search" method="GET" action="{% url 'search_tasks' %}">
+                        <input class="form-control me-2" type="search" placeholder="Search tasks..." aria-label="Search" name="q">
                         <button class="btn btn-outline-warning" type="submit">Search</button>
                     </form>
                 </div>
@@ -58,7 +58,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center text-lg-start bg-dark text-white">
+    <footer class="text-center text-lg-start bg-light text-muted">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
