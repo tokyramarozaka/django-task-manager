@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'task',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'task_manager',
         'USER': 'postgres',
-        'PASSWORD': '',
+        'PASSWORD': 'archfiend',
         'HOST': 'localhost',
         'PORT': '5432',
     }
