@@ -24,6 +24,7 @@
                 <th>ACTIONS</th>
             </tr>
         </thead>
+
         {% if tasks %}
             <tbody>
                 {% for task in tasks %}
@@ -41,6 +42,7 @@
         {% else %}
             <h5 class="text-center">There is no task at the moment</h5>
         {% endif %}
+        
     </table>
     
 {% endblock main %}

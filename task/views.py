@@ -4,7 +4,6 @@ from task.forms.task_form import TaskForm
 from .models import Category, Task
 
 # Create your views here.
-
 # TASKS
 def get_all_tasks(request):
     """ Retrieves all tasks in the database """
