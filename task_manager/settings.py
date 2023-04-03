@@ -74,12 +74,13 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# CHANGE THIS SECTION TO MAKE YOUR DATABASE WORK
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'task_manager',
         'USER': 'postgres',
-        'PASSWORD': 'archfiend',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
     }
